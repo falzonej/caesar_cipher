@@ -5,19 +5,17 @@ table = {
 }
 
 def input_convert_characters(string, table)
-  split_string = string.split(//).map { |character| table[character.to_sym] }
-  return split_string
+  string.split(//).map { |character| table[character.to_sym] }
 end
 
-def  offset_integers(converted_characters, offset)
-  offset_array = converted_characters.map { |num| num + offset }
-  return offset_array
+def offset_integers(converted_characters, offset)
+  converted_characters.map { |num| num + offset }
 end
 
 def rollover_integers(array)
   array.map do|num| 
     if (num > 26 && num < 100) || (num > 126)
-      num - 26
+      num % 26
     else num
     end
   end
